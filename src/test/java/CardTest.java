@@ -19,4 +19,11 @@ public class CardTest extends TestCase {
 
         assertEquals(10, card.getPoints());
     }
+
+    public void testSetPoints(){
+        Card card = new Card("Diamonds", "Ace");
+
+        card.setPoints(11);
+        assertEquals(11, card.getPoints());
+    }
 }
