@@ -13,4 +13,10 @@ public class CardTest extends TestCase {
 
         assertEquals(card.value, card.getValue());
     }
+
+    public void testGetPoints(){
+        Card card = new Card("Diamonds","Jack");
+
+        assertEquals(10, card.getPoints());
+    }
 }
