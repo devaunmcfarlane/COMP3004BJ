@@ -31,6 +31,10 @@ public class Card {
             return Integer.parseInt(value);
         }
     }
+
+    private void setPoints(int newPoints){
+        this.pointValue = newPoints;
+    }
 }
 
 
