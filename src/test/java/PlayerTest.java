@@ -7,4 +7,11 @@ public class PlayerTest extends TestCase {
 
         assertEquals(10, p1.getPoints());
     }
+
+
+    public void testGetName(){
+        Player p1 = new Player ();
+
+        assertEquals(10, p1.getName());
+    }
 }
