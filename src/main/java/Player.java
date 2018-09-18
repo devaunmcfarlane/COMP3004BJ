@@ -6,6 +6,9 @@ public class Player {
     int totalPoints;
     ArrayList<Card> hand = new ArrayList();
 
+    Player(String name){
+
+    }
 
     public int getTotalPoints() {
 

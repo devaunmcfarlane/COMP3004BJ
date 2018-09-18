@@ -3,7 +3,7 @@ import junit.framework.TestCase;
 public class PlayerTest extends TestCase {
 
     public void testGetPointsOneCard(){
-        Player p1 = new Player ();
+        Player p1 = new Player ("tester");
         Card c1 = new Card("Diamonds", "Jack");
         p1.hand.add(c1);
         assertEquals(10, p1.getTotalPoints());
@@ -11,7 +11,7 @@ public class PlayerTest extends TestCase {
 
 
     public void testGetPointsMultipleCards(){
-        Player p1 = new Player ();
+        Player p1 = new Player("tester");
         Card c1 = new Card("Diamonds", "Jack");
         p1.hand.add(c1);
 
