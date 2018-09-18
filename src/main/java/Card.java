@@ -1,5 +1,4 @@
-enum Suite {Hearts, Diamonds, Spades, Clubs}
-enum CardValue {Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King, Ace}
+
 public class Card {
     int pointValue;
     String suite;
@@ -8,6 +7,17 @@ public class Card {
     Card(String suit, String value) {
         this.suite = suit;
         this.value = value;
+        if(value.equals("Jack") || (value.equals("Queen"))|| (value.equals("King"))){
+            pointValue = 10;
+        }
+
+        else if (value.equals("Ace")){
+
+        }
+
+        else{
+            pointValue = Integer.parseInt(value);
+        }
     }
 
     public String getSuite(){
@@ -19,20 +29,10 @@ public class Card {
     }
 
     public int getPoints(){
-        if(value.equals("Jack") || (value.equals("Queen"))|| (value.equals("King"))){
-            return 10;
-        }
-
-        else if (value.equals("Ace")){
-            return 1;
-        }
-
-        else{
-            return Integer.parseInt(value);
-        }
+        return pointValue;
     }
 
-    private void setPoints(int newPoints){
+    public void setPoints(int newPoints){
         this.pointValue = newPoints;
     }
 }
