@@ -6,4 +6,6 @@ public class Player {
 
     int cardPoints;
     ArrayList<Card> hand = new ArrayList();
+
+
 }
