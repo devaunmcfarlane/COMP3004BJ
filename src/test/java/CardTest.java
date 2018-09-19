@@ -26,8 +26,6 @@ public class CardTest extends TestCase {
         Card card = new Card("Diamonds", "Ace");
 
         card.setPoints(11);
-
-        final Field field = card.getClass().getDeclaredField("pointValue")
         assertEquals(11, card.getPoints());
     }
 }
