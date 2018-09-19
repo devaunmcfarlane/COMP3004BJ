@@ -35,6 +35,10 @@ public class Card {
     public void setPoints(int newPoints){
         this.pointValue = newPoints;
     }
+
+    public String toString(){
+        return value + " of " + suite;
+    }
 }
 
 
