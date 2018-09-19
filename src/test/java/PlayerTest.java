@@ -29,8 +29,8 @@ public class PlayerTest extends TestCase {
 
 
     public void testGetName(){
-        Player p1 = new Player ();
+        Player p1 = new Player("Devo");
 
-        assertEquals(10, p1.getName());
+        assertEquals("Devo", p1.getName());
     }
 }

@@ -7,13 +7,13 @@ public class CardTest extends TestCase {
     public void testGetSuit(){
         Card card = new Card("Diamonds", "Ace");
 
-        assertEquals(card.suite, card.getSuite());
+        assertEquals("Diamonds", card.getSuite());
     }
 
     public void testGetValue(){
         Card card = new Card("Diamonds","Ace");
 
-        assertEquals(card.value, card.getValue());
+        assertEquals("Ace", card.getValue());
     }
 
     public void testGetPoints(){

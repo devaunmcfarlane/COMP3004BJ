@@ -118,9 +118,6 @@ public class Deck {
 
     }
 
-    public Card getAtIndex(int i){
-
-    }
 
 
 

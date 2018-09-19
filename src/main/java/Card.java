@@ -1,18 +1,14 @@
 
 public class Card {
-    int pointValue;
-    String suite;
-    String value;
+    private int pointValue;
+    private String suite;
+    private String value;
 
     Card(String suit, String value) {
         this.suite = suit;
         this.value = value;
         if(value.equals("Jack") || (value.equals("Queen"))|| (value.equals("King"))){
             pointValue = 10;
-        }
-
-        else if (value.equals("Ace")){
-
         }
 
         else{
