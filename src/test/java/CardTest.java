@@ -28,4 +28,10 @@ public class CardTest extends TestCase {
         card.setPoints(11);
         assertEquals(11, card.getPoints());
     }
+
+    public void testCardToString(){
+        Card card = new Card("Diamonds", "Ace");
+
+        assertEquals("Ace of Diamonds", card.toString());
+    }
 }

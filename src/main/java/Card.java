@@ -11,6 +11,10 @@ public class Card {
             pointValue = 10;
         }
 
+        else if (value.equals("Ace")){
+            //Nothing Here We'll deal with that later
+        }
+
         else{
             pointValue = Integer.parseInt(value);
         }

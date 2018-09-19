@@ -18,4 +18,9 @@ public class Player {
 
         return totalPoints;
     }
+
+
+    public String getName(){
+        return name;
+    }
 }
