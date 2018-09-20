@@ -44,12 +44,25 @@ public class GameTest extends TestCase {
     public void testCheckBust(){
         Game game = new Game();
         game.deal();
+        Card c1 = new Card("Diamonds", "King");
+        Card c2 = new Card("Diamonds", "Jack");
+        game.hit(game.user);
+        Card c3 = new Card ("Diamonds", "Queen");
+        game.user.getHand().set(0,c1);
+        game.user.getHand().set(1,c2);
+        game.user.getHand().set(2,c3);
         assertEquals(true, game.checkBust(game.user));
     }
 
-    public void testCheckBJ(){
+    public void testCheckUserBJ(){
         Game game = new Game();
         game.deal();
-        assertEquals(true, game.checkBust(game.user));
+        Card c1 = new Card("Diamonds", "Ace");
+        Card c2 = new Card("Diamonds", "Jack");
+        game.user.getHand().set(0,c1);
+        game.user.getHand().set(1,c2);
+        assertEquals(true, game.checkBJ(game.user));
     }
+
+    public void testCheckDealerBJ
 }
