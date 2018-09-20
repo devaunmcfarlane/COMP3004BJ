@@ -87,7 +87,7 @@ public class Game {
             //Enter File Game Loop
             boolean hasError = false;
             String[] commands = new String[20];
-            System.out.println("Ensure text file is in src/main/resources'");
+            System.out.println("Ensure text file is in src/main/resources");
             System.out.println("What is the File  name?");
             String name= input.nextLine();
             String Path = "C:\\Users\\DeVaun\\Desktop\\COMP3004BJ\\src\\main\\resources"+name+".txt" ;
@@ -524,11 +524,25 @@ public class Game {
     }
 
     public Player checkWinner(){
-        if(user.getTotalPoints() > dealer.getTotalPoints()){
+
+        if ((checkBust(user) == false) && (checkBust(dealer) == false)){
+            if(user.getTotalPoints() > dealer.getTotalPoints()){
+                return user;
+            }
+            return dealer;
+        }
+
+        else if (checkBust(user) == true){
+            return dealer;
+        }
+
+        if (checkBust(dealer) == true){
             return user;
         }
 
         return dealer;
+
+
     }
 
     public void resetCards(){
