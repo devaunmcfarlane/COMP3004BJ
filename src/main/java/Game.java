@@ -36,6 +36,8 @@ public class Game {
                 deck.shuffle();
                 System.out.println("Dealing Cards...");
                 deal();
+                checkBJ(user);
+                checkBJ()
 
 
 

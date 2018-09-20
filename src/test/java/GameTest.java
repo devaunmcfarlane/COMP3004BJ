@@ -46,4 +46,10 @@ public class GameTest extends TestCase {
         game.deal();
         assertEquals(true, game.checkBust(game.user));
     }
+
+    public void testCheckBJ(){
+        Game game = new Game();
+        game.deal();
+        assertEquals(true, game.checkBust(game.user));
+    }
 }
