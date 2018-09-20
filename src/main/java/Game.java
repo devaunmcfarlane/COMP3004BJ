@@ -74,6 +74,7 @@ public class Game {
                     break;
                 }
 
+
             }
 
                 System.out.println("Thanks For Playing!");
@@ -180,6 +181,7 @@ public class Game {
 
     public void userTurn(){
         System.out.println(user.getName() + "'s turn");
+        user.displayHand();
         while(true){
             while(true){
                 System.out.println("Would you like to Hit or Stand (H or S)");
@@ -247,6 +249,13 @@ public class Game {
         }
 
         return dealer;
+    }
+
+    public void resetCards(){
+        deck = new Deck();
+        user = new Player("user");
+        dealer = new Player("Dealer");
+
     }
 }
 
