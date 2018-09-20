@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+
 import java.util.Scanner;
 
 
@@ -73,7 +73,7 @@ public class Game {
                 if ((choice == 'N') || (choice == 'n')){
                     break;
                 }
-
+                resetCards();
 
             }
 
