@@ -35,9 +35,21 @@ public class Game {
 
 
 
+
                 //Asking To Play Again
                 System.out.println("Would you like to play again? (Y or N)");
-                choice = input.next().charAt(0);
+
+
+                while(true){
+                    choice = input.next().charAt(0);
+                    if ((choice == 'Y') || (choice == 'y') || (choice == 'N') || (choice == 'n')){
+                        break;
+                    }
+                }
+
+                if ((choice == 'N') || (choice == 'n')){
+                    break;
+                }
 
             }
 
@@ -58,13 +70,16 @@ public class Game {
     }
 
     public void hit(Player player){
-
+        player.getHand().add(deck.getCards().get(deck.getSize() - 1));
+        deck.getCards().remove(deck.getCards().get(deck.getSize()-1));
     }
 
 
     public Player getPlayer(){
         return user;
     }
+
+    
 
 
 }

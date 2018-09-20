@@ -8,7 +8,7 @@ public class Card {
     Card(String suit, String value) {
         this.suite = suit;
         this.value = value;
-        this.visibility = false;
+        this.visibility = true;
         if(value.equals("Jack") || (value.equals("Queen"))|| (value.equals("King"))){
             pointValue = 10;
         }
