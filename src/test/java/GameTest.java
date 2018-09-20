@@ -9,6 +9,10 @@ public class GameTest extends TestCase {
 
     }
 
+    public void testGetPlayer(){
+        Player p1 = new Player("beta");
 
+        assertTrue(p1 instanceof Player);
+    }
 
 }
