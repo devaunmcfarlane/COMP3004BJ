@@ -39,4 +39,10 @@ public class PlayerTest extends TestCase {
 
         assertEquals(p1.hand, p1.getHand());
     }
+
+    public void testGetPlayer(){
+        Player p1 = new Player("beta");
+
+        assertTrue(p1 instanceof Player);
+    }
 }
