@@ -39,7 +39,14 @@ public class Card {
     }
 
     public String toString(){
-        return value + " of " + suite;
+
+        if(visibility == true) {
+            return value + " of " + suite;
+        }
+
+        else{
+            return "?";
+        }
     }
 
     private void setVisibility(boolean bool){

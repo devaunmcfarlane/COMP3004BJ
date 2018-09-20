@@ -2,10 +2,15 @@ import junit.framework.TestCase;
 
 public class GameTest extends TestCase {
 
-    public void testHit(){
+    public void testUserHit(){
         Game game = new Game();
-        game.getPlayer().hit();
-        Card oldLast = game.getPlayer().getHand().get(getPlayer().getHand().size() -1);
+        Card oldLast = game.getPlayer().getHand().get((game.getPlayer().getHand().size() -1));
+
+        game.hit(game.user);
+
+        assertFalse(oldLast.equals(game.getPlayer().getHand().get((game.getPlayer().getHand().size() -1))));
+
+
 
     }
 
