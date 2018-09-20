@@ -73,4 +73,72 @@ public class GameTest extends TestCase {
         game.dealer.getHand().set(1,c2);
         assertEquals(true, game.checkBJ(game.dealer));
     }
+
+    public void testAce11then1(){
+        Game game = new Game();
+        game.deal();
+        Card c1 = new Card("Diamonds", "Ace");
+        Card c2 = new Card("Diamonds", "Jack");
+
+        c1.setPoints(11);
+        game.user.getHand().set(0,c1);
+        game.user.getHand().set(1,c2);
+        game.hit(game.user);
+        game.checkBust(game.user);
+        assertEquals(1, game.user.getHand().get(0).getPoints());
+    }
+
+    public void testDealerUnder16(){
+        Game game = new Game();
+        game.deal();
+
+        game.dealer.getHand().set(0, new Card ("Hearts", "5"));
+        game.dealer.getHand().set(1, new Card ("Hearts", "7"));
+
+        game.dealerTurn();
+
+        assertTrue(game.dealer.getHand().size() > 2);
+    }
+
+    public void testDealerSoft17(){
+        Game game = new Game();
+        game.deal();
+
+        game.dealer.getHand().set(0, new Card ("Hearts", "Ace"));
+        game.dealer.getHand().set(1, new Card ("Hearts", "6"));
+
+        game.dealerTurn();
+
+        assertTrue(game.dealer.getHand().size() > 2);
+    }
+
+    public void testDealerHitRepeat(){
+        Game game = new Game();
+        game.deal();
+
+        game.dealer.getHand().set(0, new Card ("Hearts", "2"));
+        game.dealer.getHand().set(1, new Card ("Hearts", "2"));
+
+        game.dealerTurn();
+
+        assertTrue(game.dealer.getHand().size() > 2);
+    }
+
+    public void testDealerBust(){
+        Game game = new Game();
+        game.deal();
+
+        game.dealer.getHand().set(0, new Card ("Hearts", "10"));
+        game.dealer.getHand().set(1, new Card ("Hearts", "6"));
+        game.deck.getCards().set(game.deck.getCards().size() -1, new Card ("Hearts", "10"));
+        game.dealerTurn();
+
+        assertTrue(game.dealer.getTotalPoints() > 21);
+    }
+
+    public void testCheckWinner(){
+        
+    }
+
+
 }
