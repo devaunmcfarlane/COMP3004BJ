@@ -14,12 +14,9 @@ public class GameTest extends TestCase {
     public void testUserHit() {
         Game game = new Game();
         game.deal();
-
-        Card oldLast = game.getPlayer().getHand().get((game.getPlayer().getHand().size() - 1));
+        int prevSize = game.user.getHand().size();
         game.hit(game.user);
-
-        assertFalse(oldLast.equals(game.getPlayer().getHand().get((game.getPlayer().getHand().size() - 1))));
-
+        assertEquals(prevSize + 1, game.user.getHand().size());
 
     }
 
@@ -35,5 +32,18 @@ public class GameTest extends TestCase {
         Player d1 = game.getDealer();
 
         assertTrue(d1 instanceof Player);
+    }
+
+    public void testDealerVisibility() {
+        Game game = new Game();
+        game.deal();
+
+        assertEquals(false, game.getDealer().getHand().get(0).getVisibility());
+    }
+
+    public void testCheckBust(){
+        Game game = new Game();
+        game.deal();
+        assertEquals(true, game.checkBust(game.user));
     }
 }

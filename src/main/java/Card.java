@@ -52,6 +52,8 @@ public class Card {
     public void setVisibility(boolean bool){
         this.visibility = bool;
     }
+
+    public boolean getVisibility() {return visibility;}
 }
 
 
