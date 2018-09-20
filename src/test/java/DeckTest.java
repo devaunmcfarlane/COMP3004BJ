@@ -17,7 +17,7 @@ public class DeckTest extends TestCase {
             assertEquals(1,2);
         }
 
-        else{ //Since we know the deck is shuffled we check to ensure no cards were lost.
+        else{ //Since we know the deck is shuffled we check to ensure no cards were lost
             assertEquals(52, testDeck.getCards().size());
         }
     }

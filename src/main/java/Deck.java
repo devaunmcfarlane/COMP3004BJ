@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Deck {
    private  ArrayList<Card> cards;
@@ -18,6 +19,18 @@ public class Deck {
         }
     }
     public void shuffle(){
+        ArrayList<Card> comp = cards;
+        System.out.println(cards.get(0).toString());
+         while(true){
+             Collections.shuffle(cards);
+
+             if ((comp.equals(cards))){
+                 break;
+             }
+
+
+         }
+        System.out.println(cards.get(0).toString());
 
     }
 
