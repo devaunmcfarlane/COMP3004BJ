@@ -49,7 +49,7 @@ public class Card {
         }
     }
 
-    private void setVisibility(boolean bool){
+    public void setVisibility(boolean bool){
         this.visibility = bool;
     }
 }

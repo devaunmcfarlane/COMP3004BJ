@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 
+
 public class Player {
 
     String name;
@@ -24,7 +25,7 @@ public class Player {
         return name;
     }
 
-
+    public void setName(String name){this.name = name;}
     public ArrayList<Card> getHand(){
         return hand;
     }

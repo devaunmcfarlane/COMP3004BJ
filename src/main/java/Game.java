@@ -5,9 +5,9 @@ import java.util.Scanner;
 
 public class Game {
 
-    Player user;
-    Player dealer;
-    Deck deck;
+    Player user = new Player ("Player");
+    Player dealer = new Player("Dealer");
+    Deck deck = new Deck();
 
 
 
@@ -28,6 +28,10 @@ public class Game {
         if((choice == 'C') || (choice == 'c')) {
             while (true) {
                 System.out.println("Welcome to COMP3004 BlackJack.");
+                System.out.println("Enter your name?");
+                String username = input.next();
+                user.setName(username);
+
                 System.out.println("Shuffling Cards...");
                 deck.shuffle();
                 System.out.println("Dealing Cards...");
@@ -66,6 +70,21 @@ public class Game {
     }
 
     public void deal(){
+        //User receives their cards first
+
+       user.getHand().add(deck.getCards().get(deck.getSize() - 1));
+        deck.getCards().remove(deck.getCards().get(deck.getSize()-1));
+        user.getHand().add(deck.getCards().get(deck.getSize() - 1));
+        deck.getCards().remove(deck.getCards().get(deck.getSize()-1));
+
+        //Dealer receives their cards
+        dealer.getHand().add(deck.getCards().get(deck.getSize() - 1));
+        deck.getCards().remove(deck.getCards().get(deck.getSize()-1));
+        dealer.getHand().add(deck.getCards().get(deck.getSize() - 1));
+        deck.getCards().remove(deck.getCards().get(deck.getSize()-1));
+
+        //Hide one of the dealers cards
+        dealer.getHand().get(0).setVisibility(false);
 
     }
 
