@@ -1,4 +1,6 @@
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 
@@ -83,6 +85,277 @@ public class Game {
 
         else{
             //Enter File Game Loop
+            boolean hasError = false;
+            String[] commands = new String[20];
+            System.out.println("Ensure text file is in src/main/resources'");
+            System.out.println("What is the File  name?");
+            String name= input.nextLine();
+            String Path = "C:\\Users\\DeVaun\\Desktop\\COMP3004BJ\\src\\main\\resources"+name+".txt" ;
+            File file = new File(Path);
+            Scanner sc = null;
+            try {
+                sc = new Scanner(file);
+            } catch (FileNotFoundException e) {
+                System.out.println("e.printStackTrace():File Doesnt Exist");
+                hasError = true;
+            }
+            if(!hasError) {
+                while(sc.hasNextLine()) {
+                    String line = sc.nextLine();
+                    commands = line.split(" ");
+                }
+
+            }
+            String suite = "";
+            String value = "";
+            for(int i = 0; i < 4; i++){
+
+                char c = commands[i].charAt(0);
+                char n = commands[i]. charAt(1);
+
+                if(c == 'S'){
+                    suite = "Spades";
+                }
+
+                else if ( c == 'C'){
+                    suite = "Clubs";
+                }
+
+                else if ( c == 'H'){
+                    suite = "Hearts";
+                }
+                else if ( c == 'D'){
+                    suite = "Diamonds";
+                }
+
+                if (n == 'A'){
+                    value = "Ace";
+                }
+
+                else if (n == '2'){
+                    value = "2";
+                }
+
+                else if (n == '3'){
+                    value = "3";
+                }
+                else if (n == '4'){
+                    value = "4";
+                }
+                else if (n == '5'){
+                    value = "5";
+                }
+                else if (n == '6'){
+                    value = "6";
+                }
+                else if (n == '7'){
+                    value = "7";
+                }
+                else if (n == '8'){
+                    value = "8";
+                }
+                else if (n == '9'){
+                    value = "9";
+                }
+                else if (n == '0'){
+                    value = "10";
+                }
+                else if (n == 'J'){
+                    value = "Jack";
+                }
+                else if (n == 'Q'){
+                    value = "Queen";
+                }
+                else if (n == 'K'){
+                    value = "King";
+                }
+
+                if( i < 2){
+                    user.getHand().add( new Card(suite, value));
+                }
+
+                else{
+                    dealer.getHand().add(new Card (suite, value));
+                }
+
+            }
+
+            if((checkBJ(user) == true)&&(checkBJ(dealer) == false)){
+                System.out.println("Blackjack! " + user.getName() + " wins!");
+                System.exit(0);
+            }
+
+            else if(checkBJ(dealer) == true){
+                System.out.println("Blackjack! The Dealer wins!");
+                System.exit(0);
+            }
+
+            int pos = 0;
+            for(int i = 4; i <commands.length; i++){
+                if(commands[i] == "H"){
+                    i++;
+                    char c = commands[i].charAt(0);
+                    char n = commands[i]. charAt(1);
+
+                    if(c == 'S'){
+                        suite = "Spades";
+                    }
+
+                    else if ( c == 'C'){
+                        suite = "Clubs";
+                    }
+
+                    else if ( c == 'H'){
+                        suite = "Hearts";
+                    }
+                    else if ( c == 'D'){
+                        suite = "Diamonds";
+                    }
+
+                    if (n == 'A'){
+                        value = "Ace";
+                    }
+
+                    else if (n == '2'){
+                        value = "2";
+                    }
+
+                    else if (n == '3'){
+                        value = "3";
+                    }
+                    else if (n == '4'){
+                        value = "4";
+                    }
+                    else if (n == '5'){
+                        value = "5";
+                    }
+                    else if (n == '6'){
+                        value = "6";
+                    }
+                    else if (n == '7'){
+                        value = "7";
+                    }
+                    else if (n == '8'){
+                        value = "8";
+                    }
+                    else if (n == '9'){
+                        value = "9";
+                    }
+                    else if (n == '0'){
+                        value = "10";
+                    }
+                    else if (n == 'J'){
+                        value = "Jack";
+                    }
+                    else if (n == 'Q'){
+                        value = "Queen";
+                    }
+                    else if (n == 'K'){
+                        value = "King";
+                    }
+
+                    fileHit(user, new Card(suite, value));
+                    user.displayHand();
+                    if(checkBust(user) == true){
+                        System.out.println("You bust! Dealer Wins!");
+                        System.exit(0);
+                    }
+                }
+
+                else if (commands[i] == "S"){
+                    pos = i;
+                    System.out.println(user.getName() + " stands");
+                    user.displayHand();
+                    break;
+                }
+
+
+            }
+            for(int i = pos; i <commands.length; i++ ){
+                if(commands[i] == "H"){
+                    i++;
+                    char c = commands[i].charAt(0);
+                    char n = commands[i]. charAt(1);
+
+                    if(c == 'S'){
+                        suite = "Spades";
+                    }
+
+                    else if ( c == 'C'){
+                        suite = "Clubs";
+                    }
+
+                    else if ( c == 'H'){
+                        suite = "Hearts";
+                    }
+                    else if ( c == 'D'){
+                        suite = "Diamonds";
+                    }
+
+                    if (n == 'A'){
+                        value = "Ace";
+                    }
+
+                    else if (n == '2'){
+                        value = "2";
+                    }
+
+                    else if (n == '3'){
+                        value = "3";
+                    }
+                    else if (n == '4'){
+                        value = "4";
+                    }
+                    else if (n == '5'){
+                        value = "5";
+                    }
+                    else if (n == '6'){
+                        value = "6";
+                    }
+                    else if (n == '7'){
+                        value = "7";
+                    }
+                    else if (n == '8'){
+                        value = "8";
+                    }
+                    else if (n == '9'){
+                        value = "9";
+                    }
+                    else if (n == '0'){
+                        value = "10";
+                    }
+                    else if (n == 'J'){
+                        value = "Jack";
+                    }
+                    else if (n == 'Q'){
+                        value = "Queen";
+                    }
+                    else if (n == 'K'){
+                        value = "King";
+                    }
+
+                    fileHit(dealer, new Card(suite, value));
+
+                    if(checkBust(dealer) == true){
+                        dealer.displayHand();
+                        System.out.println("You bust! Dealer Wins!");
+                        break;
+                    }
+                }
+
+                else if (commands[i] == "S"){
+                    pos = i;
+                    System.out.println("Dealer stands");
+                    dealer.displayHand();
+                    break;
+                }
+            }
+
+
+
+            System.out.println("The Winner is " + checkWinner().getName() + " !!");
+            System.exit(0);
+
         }
 
 
@@ -103,13 +376,20 @@ public class Game {
 
     public void hit(Player player){
 
-        if((user.getTotalPoints() <= 10) && (deck.getCards().get(deck.getSize()- 1).getValue().equals("Ace"))){
+        if((player.getTotalPoints() <= 10) && (deck.getCards().get(deck.getSize()- 1).getValue().equals("Ace"))){
             deck.getCards().get(deck.getSize()-1).setPoints(11);
         }
         player.getHand().add(deck.getCards().get(deck.getSize() - 1));
         deck.getCards().remove(deck.getCards().get(deck.getSize()-1));
 
 
+    }
+
+    public void fileHit(Player player, Card card){
+        if((player.getTotalPoints() <= 10) && (card.getValue().equals("Ace"))){
+            card.setPoints(11);
+        }
+        player.getHand().add(card);
     }
 
 
