@@ -21,6 +21,9 @@ public class Deck {
 
     }
 
+    public ArrayList<Card> getCards(){
+       return cards;
+    }
 
 
 

@@ -7,7 +7,7 @@ public class Player {
     ArrayList<Card> hand = new ArrayList();
 
     Player(String name){
-
+        this.name = name;
     }
 
     public int getTotalPoints() {

@@ -3,10 +3,12 @@ public class Card {
     private int pointValue;
     private String suite;
     private String value;
+    private boolean visibility;
 
     Card(String suit, String value) {
         this.suite = suit;
         this.value = value;
+        this.visibility = false;
         if(value.equals("Jack") || (value.equals("Queen"))|| (value.equals("King"))){
             pointValue = 10;
         }
@@ -38,6 +40,10 @@ public class Card {
 
     public String toString(){
         return value + " of " + suite;
+    }
+
+    private void setVisibility(boolean bool){
+        this.visibility = bool;
     }
 }
 
