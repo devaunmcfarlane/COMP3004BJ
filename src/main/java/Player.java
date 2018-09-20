@@ -29,4 +29,24 @@ public class Player {
     public ArrayList<Card> getHand(){
         return hand;
     }
+
+    public void displayHand(){
+      System.out.println(name +"'s Hand:");
+      for(int i =0; i <= hand.size() -1; i++){
+          System.out.println(hand.get(i).toString());
+      }
+      System.out.println("Total Points: " + getTotalPoints());
+    }
+
+    public boolean softSeventeen(){
+        if(getTotalPoints() == 17){
+            for(int i = 0; i <= hand.size() - 1; i++){
+                if(hand.get(i).getPoints() == 11){
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
 }

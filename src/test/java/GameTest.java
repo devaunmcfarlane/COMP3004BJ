@@ -140,15 +140,15 @@ public class GameTest extends TestCase {
         Game game = new Game();
         game.deal();
 
-        game.dealer.getHand().add(new Card "Hearts", "10");
+        game.dealer.getHand().add(new Card ("Hearts", "10"));
         game.dealer.getHand().set(0, new Card ("Hearts", "2"));
         game.dealer.getHand().set(1, new Card ("Hearts", "3"));
 
-        game.user.getHand().add(new Card "Hearts", "10");
+        game.user.getHand().add(new Card ("Hearts", "10"));
         game.user.getHand().set(0, new Card ("Diamonds", "3"));
         game.user.getHand().set(1, new Card ("Hearts", "3"));
 
-        game.checkWinner();
+        assertEquals(game.user, game.checkWinner());
     }
 
 

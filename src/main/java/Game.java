@@ -8,14 +8,14 @@ public class Game {
     Player user = new Player ("Player");
     Player dealer = new Player("Dealer");
     Deck deck = new Deck();
-
+    char choice;
+    Scanner input = new Scanner(System.in);
 
 
     public void launch(){
-        char choice;
-        Scanner input = new Scanner(System.in);
 
-        while(1 == 1){ //Input Loop only breaks if user enters C or F, handles unexpected chars.
+
+        while(true){ //Input Loop only breaks if user enters C or F, handles unexpected chars.
             System.out.println("For Console Input Press C, for File Input press F");
 
             choice = input.next().charAt(0);
@@ -36,8 +36,23 @@ public class Game {
                 deck.shuffle();
                 System.out.println("Dealing Cards...");
                 deal();
-                checkBJ(user);
-                checkBJ(dealer);
+                if((checkBJ(user) == true)&&(checkBJ(dealer) == false)){
+                    System.out.println("Blackjack! " + user.getName() + " wins!");
+                }
+
+                else if(checkBJ(dealer) == true){
+                    System.out.println("Blackjack! The Dealer wins!");
+                }
+
+                else{
+                    userTurn();
+                    dealerTurn();
+                    System.out.println("The Winner is " + checkWinner().getName() + " !!");
+
+
+
+                }
+
 
 
 
@@ -155,13 +170,83 @@ public class Game {
                         return false;
                     }
                 }
-
             }
             return true;
         }
        else {
            return false;
         }
+    }
+
+    public void userTurn(){
+        System.out.println(user.getName() + "'s turn");
+        while(true){
+            while(true){
+                System.out.println("Would you like to Hit or Stand (H or S)");
+                choice = input.next().charAt(0);
+                if ((choice == 'H') || (choice == 'h') || (choice == 'S') || (choice == 's')){
+                    break;
+                }
+            }
+
+            if ((choice == 'H') || (choice == 'h')){
+                hit(user);
+                user.displayHand();
+                if(checkBust(user) == true){
+                    System.out.println("You bust! Dealer Wins!");
+                    break;
+                }
+
+            }
+
+            else if ((choice == 'S') || (choice == 's')){
+
+                System.out.println(user.getName() + " stands");
+                user.displayHand();
+                break;
+            }
+
+        }
+    }
+
+    public void dealerTurn(){
+        System.out.println("Dealer's turn");
+        dealer.getHand().get(0).setVisibility(true);
+
+        while(true){
+
+
+            if(dealer.getTotalPoints() <= 16){
+                hit(dealer);
+                System.out.println("Dealer Hits");
+                if(checkBust(dealer) == true){
+                    System.out.println("Dealer bust! You win!");
+                }
+            }
+
+            else if((dealer.softSeventeen() == true)){
+                hit(dealer);
+                if(checkBust(dealer) == true){
+                    System.out.println("Dealer bust! You win!");
+                }
+            }
+
+            else {
+                System.out.println("Dealer Stands");
+                dealer.displayHand();
+                break;
+            }
+
+
+        }
+    }
+
+    public Player checkWinner(){
+        if(user.getTotalPoints() > dealer.getTotalPoints()){
+            return user;
+        }
+
+        return dealer;
     }
 }
 
