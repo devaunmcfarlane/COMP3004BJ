@@ -79,7 +79,9 @@ public class Game {
         return user;
     }
 
-    
+    public Player getDealer(){
+        return dealer;
+    }
 
 
 }
