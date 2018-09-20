@@ -14,7 +14,7 @@ public class Card {
         }
 
         else if (value.equals("Ace")){
-            //Nothing Here We'll deal with that later
+            pointValue = 1;
         }
 
         else{

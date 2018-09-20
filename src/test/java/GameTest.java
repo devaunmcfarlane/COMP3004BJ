@@ -41,7 +41,7 @@ public class GameTest extends TestCase {
         assertEquals(false, game.getDealer().getHand().get(0).getVisibility());
     }
 
-    public void testCheckBust(){
+    public void testCheckUserBust(){
         Game game = new Game();
         game.deal();
         Card c1 = new Card("Diamonds", "King");
@@ -64,5 +64,13 @@ public class GameTest extends TestCase {
         assertEquals(true, game.checkBJ(game.user));
     }
 
-    public void testCheckDealerBJ
+    public void testCheckDealerBJ(){
+        Game game = new Game();
+        game.deal();
+        Card c1 = new Card("Diamonds", "Ace");
+        Card c2 = new Card("Diamonds", "Jack");
+        game.dealer.getHand().set(0,c1);
+        game.dealer.getHand().set(1,c2);
+        assertEquals(true, game.checkBJ(game.dealer));
+    }
 }

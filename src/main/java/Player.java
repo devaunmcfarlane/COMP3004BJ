@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class Player {
 
     String name;
-    int totalPoints;
+
     ArrayList<Card> hand = new ArrayList();
 
     Player(String name){
@@ -12,7 +12,7 @@ public class Player {
     }
 
     public int getTotalPoints() {
-
+        int totalPoints = 0;
         for(int i = 0; i <= hand.size() - 1; i++){
             totalPoints += hand.get(i).getPoints();
         }

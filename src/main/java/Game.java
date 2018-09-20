@@ -37,7 +37,7 @@ public class Game {
                 System.out.println("Dealing Cards...");
                 deal();
                 checkBJ(user);
-                checkBJ()
+                checkBJ(dealer);
 
 
 
@@ -74,18 +74,11 @@ public class Game {
     }
 
     public void deal(){
-        //User receives their cards first
+        hit(user);
+        hit(user);
 
-       user.getHand().add(deck.getCards().get(deck.getSize() - 1));
-        deck.getCards().remove(deck.getCards().get(deck.getSize()-1));
-        user.getHand().add(deck.getCards().get(deck.getSize() - 1));
-        deck.getCards().remove(deck.getCards().get(deck.getSize()-1));
-
-        //Dealer receives their cards
-        dealer.getHand().add(deck.getCards().get(deck.getSize() - 1));
-        deck.getCards().remove(deck.getCards().get(deck.getSize()-1));
-        dealer.getHand().add(deck.getCards().get(deck.getSize() - 1));
-        deck.getCards().remove(deck.getCards().get(deck.getSize()-1));
+        hit(dealer);
+        hit(dealer);
 
         //Hide one of the dealers cards
         dealer.getHand().get(0).setVisibility(false);
@@ -93,8 +86,14 @@ public class Game {
     }
 
     public void hit(Player player){
+
+        if((user.getTotalPoints() <= 10) && (deck.getCards().get(deck.getSize()- 1).getValue().equals("Ace"))){
+            deck.getCards().get(deck.getSize()-1).setPoints(11);
+        }
         player.getHand().add(deck.getCards().get(deck.getSize() - 1));
         deck.getCards().remove(deck.getCards().get(deck.getSize()-1));
+
+
     }
 
 
@@ -106,5 +105,63 @@ public class Game {
         return dealer;
     }
 
+    public boolean checkBJ(Player player){
+        if((player.getHand().size() == 2)  && ((player.getHand().get(0).getValue().equals("Ace")) && ((player.getHand().get(1).getValue().equals("King"))))){
+            return true;
+        }
 
+        else if ((player.getHand().size() == 2)  && ((player.getHand().get(0).getValue().equals("Ace")) && ((player.getHand().get(1).getValue().equals("Queen"))))){
+            return true;
+        }
+
+        else if ((player.getHand().size() == 2)  && ((player.getHand().get(0).getValue().equals("Ace")) && ((player.getHand().get(1).getValue().equals("Jack"))))){
+            return true;
+        }
+
+        else if ((player.getHand().size() == 2)  && ((player.getHand().get(0).getValue().equals("Ace")) && ((player.getHand().get(1).getValue().equals("10"))))){
+            return true;
+        }
+
+        else if ((player.getHand().size() == 2)  && ((player.getHand().get(0).getValue().equals("King")) && ((player.getHand().get(1).getValue().equals("Ace"))))){
+            return true;
+        }
+
+        else if ((player.getHand().size() == 2)  && ((player.getHand().get(0).getValue().equals("Queen")) && ((player.getHand().get(1).getValue().equals("Ace"))))){
+            return true;
+        }
+
+        else if ((player.getHand().size() == 2)  && ((player.getHand().get(0).getValue().equals("Jack")) && ((player.getHand().get(1).getValue().equals("Ace"))))){
+            return true;
+        }
+
+        else if ((player.getHand().size() == 2)  && ((player.getHand().get(0).getValue().equals("10")) && ((player.getHand().get(1).getValue().equals("Ace"))))){
+            return true;
+        }
+
+
+
+        return false;
+    }
+
+    public boolean checkBust(Player player){
+        if (player.getTotalPoints() > 21){
+
+            //Check for Aces and attempt to reduce points
+            for(int i = 0; i <= player.getHand().size() -1; i++){
+                if(player.getHand().get(i).getValue().equals("Ace")){
+                    player.getHand().get(i).setPoints(1);
+
+                    if(player.getTotalPoints() <= 21){
+                        return false;
+                    }
+                }
+
+            }
+            return true;
+        }
+       else {
+           return false;
+        }
+    }
 }
+
