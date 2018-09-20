@@ -33,4 +33,10 @@ public class PlayerTest extends TestCase {
 
         assertEquals("Devo", p1.getName());
     }
+
+    public void testGetHand(){
+        Player p1 = new Player("beta");
+
+        assertEquals(p1.hand, p1.getHand());
+    }
 }

@@ -18,19 +18,16 @@ public class Deck {
             }
         }
     }
-    public void shuffle(){
+    public void shuffle(){ //I'm actually confused as to why this works like this.
         ArrayList<Card> comp = cards;
-        System.out.println(cards.get(0).toString());
          while(true){
              Collections.shuffle(cards);
 
              if ((comp.equals(cards))){
                  break;
              }
-
-
          }
-        System.out.println(cards.get(0).toString());
+
 
     }
 
